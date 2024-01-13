@@ -113,3 +113,41 @@ describe('Division', () => {
     expect(calculator.divide(-4.8, 1.2)).toBe(-4);
   });
 });
+
+describe('Multiplication', () => {
+  test('two positive numbers', () => {
+    expect(calculator.multiply(3, 4)).toBe(12);
+  });
+
+  test('a positive number by a negative number', () => {
+    expect(calculator.multiply(3, -4)).toBe(-12);
+  });
+
+  test('two negative numbers', () => {
+    expect(calculator.multiply(-3, -4)).toBe(12);
+  });
+
+  test('a number by zero', () => {
+    expect(calculator.multiply(5, 0)).toBe(0);
+  });
+
+  test('zero by a number', () => {
+    expect(calculator.multiply(0, 7)).toBe(0);
+  });
+
+  test('zero by zero', () => {
+    expect(calculator.multiply(0, 0)).toBe(0);
+  });
+
+  test('two decimal numbers', () => {
+    expect(calculator.multiply(2.5, 1.5)).toBe(3.75);
+  });
+
+  test('a negative decimal number by a positive decimal number', () => {
+    expect(calculator.multiply(-2.5, 1.5)).toBe(-3.75);
+  });
+
+  test('two large numbers', () => {
+    expect(calculator.multiply(1234, 5678)).toBe(7006652);
+  });
+});
