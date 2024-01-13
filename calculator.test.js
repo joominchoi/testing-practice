@@ -75,3 +75,41 @@ describe('Subtraction', () => {
     expect(calculator.subtract(-5.6789, -1.234)).toBe(-4.4449);
   });
 });
+
+describe('Division', () => {
+  test('two positive numbers', () => {
+    expect(calculator.divide(4, 2)).toBe(2);
+  });
+
+  test('a positive and a negative number', () => {
+    expect(calculator.divide(4, -2)).toBe(-2);
+  });
+
+  test('a negative number and a positive number', () => {
+    expect(calculator.divide(-4, 2)).toBe(-2);
+  });
+
+  test('two negative numbers', () => {
+    expect(calculator.divide(-4, -2)).toBe(2);
+  });
+
+  test('zero by a positive number', () => {
+    expect(calculator.divide(0, 5)).toBe(0);
+  });
+
+  test('a positive number by zero', () => {
+    expect(calculator.divide(8, 0)).toBe('Cannot divide by zero');
+  });
+
+  test('zero by zero', () => {
+    expect(calculator.divide(0, 0)).toBe('Cannot divide by zero');
+  });
+
+  test('a decimal number by another decimal number', () => {
+    expect(calculator.divide(3.6, 1.2)).toBe(3);
+  });
+
+  test('a negative decimal number by a positive decimal number', () => {
+    expect(calculator.divide(-4.8, 1.2)).toBe(-4);
+  });
+});
