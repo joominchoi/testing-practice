@@ -198,7 +198,7 @@
   },
   "scripts": {
     "test": "jest",
-    "watch": "jest --watch *.js"
+    "watch": "jest --watch --verbose *.js"
   },
   "author": "",
   "license": "ISC"
