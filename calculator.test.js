@@ -151,3 +151,21 @@ describe('Multiplication', () => {
     expect(calculator.multiply(1234, 5678)).toBe(7006652);
   });
 });
+
+describe('Invalid arguments', () => {
+  test('Non number arguments for addition', () => {
+    expect(calculator.add(1, '2')).toBe('Invalid input. Both arguments must be numbers.');
+  });
+
+  test('Non number arguments for subtraction', () => {
+    expect(calculator.subtract('2', '1')).toBe('Invalid input. Both arguments must be numbers.');
+  });
+
+  test('Non number arguments for division', () => {
+    expect(calculator.divide(4, [2])).toBe('Invalid input. Both arguments must be numbers.');
+  });
+
+  test('Non number arguments for multiplication', () => {
+    expect(calculator.multiply('1', [2])).toBe('Invalid input. Both arguments must be numbers.');
+  });
+});
