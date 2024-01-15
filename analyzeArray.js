@@ -3,7 +3,8 @@ function analyzeArray(arrayOfNumbers) {
   const average = sum / arrayOfNumbers.length;
 
   return {
-    average: average
+    average: average,
+    length: arrayOfNumbers.length
   }
 }
 
