@@ -1,4 +1,8 @@
 function analyzeArray(arrayOfNumbers) {
+  if (!Array.isArray(arrayOfNumbers)) {
+    throw new Error('Input must be an array of numbers');
+  }
+
   if (arrayOfNumbers.length === 0) {
     return {
       average: null,

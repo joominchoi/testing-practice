@@ -1,6 +1,6 @@
 const analyzeArray = require('./analyzeArray');
 
-describe('analyzeArray', () => {
+describe('Array of numbers', () => {
   test('returns average for an array of numbers', () => {
     const analysisResult = analyzeArray([1, 2, 3, 4, 5]);
 
@@ -51,3 +51,16 @@ describe('Empty array', () => {
     expect(analysisResult.length).toBe(0);
   });
 });
+
+describe('Not an array', () => {
+  test('throws an error for non-array input', () => {
+    // Test with a string input
+    expect(() => analyzeArray('not an array')).toThrow('Input must be an array of numbers');
+
+    // Test with an object input
+    expect(() => analyzeArray({ key: 'value' })).toThrow('Input must be an array of numbers');
+
+    // Test with a number input
+    expect(() => analyzeArray(42)).toThrow('Input must be an array of numbers');
+  });
+})
