@@ -1,66 +1,64 @@
 const analyzeArray = require('./analyzeArray');
 
-describe('Array of numbers', () => {
-  test('returns average for an array of numbers', () => {
-    const analysisResult = analyzeArray([1, 2, 3, 4, 5]);
+describe('analyzeArray', () => {
+  describe('Array of numbers', () => {
+    const numbersArray = [1, 2, 3, 4, 5];
+    const analysisResult = analyzeArray(numbersArray);
 
-    expect(analysisResult.average).toBe(3);
+    test('returns average', () => {
+      expect(analysisResult.average).toBe(3);
+    });
+
+    test('returns smallest number', () => {
+      expect(analysisResult.min).toBe(1);
+    });
+
+    test('returns largest number', () => {
+      expect(analysisResult.max).toBe(5);
+    });
+
+    test('returns length', () => {
+      expect(analysisResult.length).toBe(numbersArray.length);
+    });
   });
 
-  test('returns smallest number in array', () => {
-    const analysisResult = analyzeArray([1, 2, 3, 4, 5]);
+  describe('Empty array', () => {
+    const emptyArray = [];
+    const analysisResult = analyzeArray(emptyArray);
 
-    expect(analysisResult.min).toBe(1);
+    test('average returns null', () => {
+      expect(analysisResult.average).toBe(null);
+    });
+
+    test('min returns null', () => {
+      expect(analysisResult.min).toBe(null);
+    });
+
+    test('max returns null', () => {
+      expect(analysisResult.max).toBe(null);
+    });
+
+    test('length returns 0', () => {
+      expect(analysisResult.length).toBe(emptyArray.length);
+    });
   });
 
-  test('returns largest number in array', () => {
-    const analysisResult = analyzeArray([1, 2, 3, 4, 5]);
+  describe('Not an array', () => {
+    test('throws an error for non-array input', () => {
+      // Test with a string input
+      expect(() => analyzeArray('not an array')).toThrow(
+        'Input must be an array of numbers'
+      );
 
-    expect(analysisResult.max).toBe(5);
-  });
+      // Test with an object input
+      expect(() => analyzeArray({ key: 'value' })).toThrow(
+        'Input must be an array of numbers'
+      );
 
-  test('returns length of array', () => {
-    const analysisResult = analyzeArray([1, 2, 3, 4, 5]);
-
-    expect(analysisResult.length).toBe(5);
+      // Test with a number input
+      expect(() => analyzeArray(42)).toThrow(
+        'Input must be an array of numbers'
+      );
+    });
   });
 });
-
-describe('Empty array', () => {
-  test('average returns null', () => {
-    const analysisResult = analyzeArray([]);
-
-    expect(analysisResult.average).toBe(null);
-  });
-
-  test('min returns null', () => {
-    const analysisResult = analyzeArray([]);
-
-    expect(analysisResult.min).toBe(null);
-  });
-
-  test('max returns null', () => {
-    const analysisResult = analyzeArray([]);
-
-    expect(analysisResult.max).toBe(null);
-  });
-
-  test('length returns 0', () => {
-    const analysisResult = analyzeArray([]);
-
-    expect(analysisResult.length).toBe(0);
-  });
-});
-
-describe('Not an array', () => {
-  test('throws an error for non-array input', () => {
-    // Test with a string input
-    expect(() => analyzeArray('not an array')).toThrow('Input must be an array of numbers');
-
-    // Test with an object input
-    expect(() => analyzeArray({ key: 'value' })).toThrow('Input must be an array of numbers');
-
-    // Test with a number input
-    expect(() => analyzeArray(42)).toThrow('Input must be an array of numbers');
-  });
-})
