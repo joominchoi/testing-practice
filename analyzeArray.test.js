@@ -1,3 +1,4 @@
+const { default: expect } = require('expect');
 const analyzeArray = require('./analyzeArray');
 
 describe('analyzeArray', () => {
@@ -19,6 +20,16 @@ describe('analyzeArray', () => {
 
     test('returns length', () => {
       expect(analysisResult.length).toBe(numbersArray.length);
+    });
+  });
+
+  describe('Array with mixture of numbers and strings', () => {
+    const mixedArray = [1, 'two', 3, 'four', 5];
+
+    test('throws an error for array that contains non numbers', () => {
+      expect(() => analyzeArray(mixedArray)).toThrow(
+        'Input must be an array of only numbers'
+      );
     });
   });
 

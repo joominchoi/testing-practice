@@ -1,9 +1,9 @@
-function analyzeArray(arrayOfNumbers) {
-  if (!Array.isArray(arrayOfNumbers)) {
+function analyzeArray(input) {
+  if (!Array.isArray(input)) {
     throw new Error('Input must be an array of numbers');
   }
 
-  if (arrayOfNumbers.length === 0) {
+  if (input.length === 0) {
     return {
       average: null,
       min: null,
@@ -12,17 +12,30 @@ function analyzeArray(arrayOfNumbers) {
     };
   }
 
-  const sum = arrayOfNumbers.reduce((acc, num) => acc + num, 0);
-  const average = sum / arrayOfNumbers.length;
-  const min = Math.min(...arrayOfNumbers)
-  const max = Math.max(...arrayOfNumbers)
+  if (!areAllNumbers(input)) {
+    throw new Error('Input must be an array of only numbers')
+  }
+
+  const sum = input.reduce((acc, num) => acc + num, 0);
+  const average = sum / input.length;
+  const min = Math.min(...input)
+  const max = Math.max(...input)
 
   return {
     average: average,
     min: min,
     max: max,
-    length: arrayOfNumbers.length
+    length: input.length
   }
+}
+
+function areAllNumbers(input) {
+  for (const element of input) {
+    if (typeof element !== 'number' || isNaN(element)) {
+      return false;
+    }
+  }
+  return true;
 }
 
 module.exports = analyzeArray;
